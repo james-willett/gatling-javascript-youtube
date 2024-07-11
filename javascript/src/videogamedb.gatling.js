@@ -11,6 +11,8 @@ export default simulation((setUp) => {
   // Scenario
   const myScenario = scenario("My Scenario")
   .exec(http("Get All Games").get("/videogame")
+        .check(status().is(200)))
+  .exec(http("Get Single Game").get("/videogame/1")
         .check(status().is(200)));
 
   // setUp block
