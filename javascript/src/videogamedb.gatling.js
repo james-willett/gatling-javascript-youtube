@@ -1,4 +1,4 @@
-import { atOnceUsers, scenario, simulation } from "@gatling.io/core";
+import { atOnceUsers, scenario, simulation, pause } from "@gatling.io/core";
 import { http, status } from "@gatling.io/http";
 
 export default simulation((setUp) => {
@@ -9,11 +9,13 @@ export default simulation((setUp) => {
     .contentTypeHeader("application/json");
 
   // Scenario
-  const myScenario = scenario("My Scenario")
-  .exec(http("Get All Games").get("/videogame")
-        .check(status().is(200)))
-  .exec(http("Get Single Game").get("/videogame/1")
-        .check(status().is(200)));
+  const myScenario = scenario("My Scenario").exec(
+    http("Get All Games").get("/videogame")
+        .check(status().is(200)),
+    pause(5),
+    http("Get Single Game").get("/videogame/1")
+        .check(status().is(200))
+    );
 
   // setUp block
   setUp(myScenario.injectOpen(atOnceUsers(1))).protocols(httpProtocol);
