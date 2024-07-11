@@ -1,4 +1,4 @@
-import { atOnceUsers, scenario, simulation, jmesPath, csv, pause, feed } from "@gatling.io/core";
+import { atOnceUsers, scenario, simulation, jmesPath, csv, pause, feed, rampUsers } from "@gatling.io/core";
 import { http, status } from "@gatling.io/http";
 
 export default simulation((setUp) => {
@@ -27,5 +27,9 @@ export default simulation((setUp) => {
     );
 
   // setUp block
-  setUp(myScenario.injectOpen(atOnceUsers(1))).protocols(httpProtocol);
+  setUp(myScenario.injectOpen(
+    atOnceUsers(5),
+    rampUsers(10).during(10)
+    ).protocols(httpProtocol));
+
 });
