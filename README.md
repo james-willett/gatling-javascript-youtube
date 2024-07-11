@@ -1,4 +1,8 @@
-# Gatling JS - JavaScript and TypeScript demo projects
+# Gatling JavaScript Example
+
+A simple example of using the JavaScript version of Gatling.
+
+This example supports my Gatling JavaScript YouTube video (LINK TO FOLLOW)
 
 A simple showcase of JavaScript and TypeScript NPM projects using Gatling JS. Please also check out the [introduction to JavaScript scripting](https://docs.gatling.io/tutorials/scripting-intro-js/) in the Gatling documentation.
 
